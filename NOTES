@@ -1,0 +1,105 @@
+/***
+ *
+ * NOTE
+ *
+ * FILE:'/kingsPerfectWar/NOTES';
+ * CHAR:'UTF-8';
+ *
+ * Shared modification - NOTE
+ * @JARODGER.20190305:
+ * 汉化步骤#2，
+ *** 获取作者思路、
+ *** 了解开发进度。
+ *
+ * CONS.:
+ *** 共28项。
+ *
+ */
+
+
+TODO
+//近期计划
+
+level design
+//关卡设计
+
+  tutorial improvements
+  //教程改进
+    unable to click except
+    //1.点击失效；
+    highlight
+    //2.控件高亮；
+    option to skip
+    //3.跳过选项；
+  levels scale in time from ~1 minute to ~15 minutes over ~20 levels
+  //4.关卡20之后周期是1分钟到15分钟；
+  make a random level generator?
+  //5.开发一套随机产生关卡地图的引擎？
+  1 time prizes of WIS/INT on *very* difficult dungeons every few levels, starting at 5
+  //6.关卡5之后每隔几层就开一个超难关卡并给予一次性奖励；
+  increasing gold prizes and EXP for clearing each level to entice players to stay at peak
+  //7.要吸引玩家在后期坚持游戏得增加过关奖励；
+
+extras tab
+//额外的选项卡
+  polls
+  //8.玩家意见反馈功能；
+
+make clearSave work (defaults in load());
+//9.优化存档机制（load()默认值）；
+QoL auto-add sleep when you can't do a task
+//10.任务中断时QoL自动休眠；
+reset and clear all lists button
+//11.重载及清除列表按钮；
+
+heroes
+//英雄
+  purpose
+  //目的
+    Make combat more interesting and less one-dimensional
+    //12.是战斗更有趣并减少一维；
+    build up over time
+    //13.持续成长；
+    can't be accessed immediately in the level - requires minimal propagation
+    //14.不能在关卡开始时直接招募 - 需要满足一定的条件；
+
+unit statistics
+//15.单位统计；
+
+image pooling for lists
+//16.列表需要图片缓存池；
+image pooling for map
+//17.地图需要图片缓存池；
+browsers
+//18.浏览器适配；
+mobile
+//19.移动端适配；
+
+additional ideas -
+//其他思路
+  bestiary to show unit types
+  //显示单位类型的最佳方法
+    simulate combat
+    //20.模拟战斗；
+  need more goals than "overcome next wall". Consider sprawling in a different direction?
+  //需要比“冲关”更多的游戏目标，考虑一下其他方向？
+    dungeons for king/heroes
+    //21.国王或英雄可以建设地牢；
+    research technologies / magic
+    //22.研究科技或魔法；
+    alternate uses of soul crystals
+    //23.不同种类魂晶的混合使用；
+    new power systems / damage types
+    //24.新的能量体系或伤害种类；
+    inner world growth
+    //25.内部世界的养成；
+    apprentice
+    //26.学徒；
+
+  rally peasants / send mercenaries / send assassins - auto-creates units and sends them at the nearest base w/o a unique reward
+  //27.召集农民，派遣佣兵，派遣刺客，自动创建部队并且派遣到邻近地点以图获取奖赏；
+
+Questions -
+//问题
+  Better way to re-arrange Stats? Or Extras?
+  //28.重新设计状态数据？还是增添一些功能？

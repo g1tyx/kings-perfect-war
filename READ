@@ -1,0 +1,395 @@
+READ.EN
+
+Refer:
+  KingsPerfectWar;
+Versi:
+  20190306@Jarodger;
+Sourc:
+  'https://gitee.com/likexia/stopsign/tree/master/KingsPerfectWar';
+Descr:
+  Idling-Game-Codes-CNPlayerStudy;
+
+Archi:
+  'stopsign/KingsPerfectWar'
+  ┝ actions
+  ┊ ┝ actions.js
+  ┊ ┊ ┝ actions:obj
+  ┊ ┊ ┊ ┝ validActions:arr
+  ┊ ┊ ┊ ┝ tick:fun
+  ┊ ┊ ┊ ┝ restart:fun
+  ┊ ┊ ┊ ┝ refresh:fun
+  ┊ ┊ ┊ ┝ adjustCosts:fun
+  ┊ ┊ ┊ ┝ setCosts:fun
+  ┊ ┊ ┊ ┕ translateNextToCurrent:fun
+  ┊ ┊ ┝ getActionByVarName:fun
+  ┊ ┊ ┝ addAction:fun
+  ┊ ┊ ┝ addActionToList:fun
+  ┊ ┊ ┝ addActionToNext:fun
+  ┊ ┊ ┕ getNumOnList:fun
+  ┊ ┝ castleActions.js
+  ┊ ┊ ┕ castle:obj
+  ┊ ┊   ┝ tick:fun
+  ┊ ┊   ┕ helpers:obj
+  ┊ ┊     ┝ goldToAdd:fun
+  ┊ ┊     ┝ woodToAdd:fun
+  ┊ ┊     ┝ empowerCost:fun
+  ┊ ┊     ┕ getNextHighestEmpower:fun
+  ┊ ┝ kingActions.js
+  ┊ ┊ ┕ king:obj
+  ┊ ┊   ┝ savedData:obj
+  ┊ ┊   ┊ ┝ int:num
+  ┊ ┊   ┊ ┝ wis:num
+  ┊ ┊   ┊ ┝ cha:num
+  ┊ ┊   ┊ ┝ rflxInitial:num
+  ┊ ┊   ┊ ┝ rflxCap:num
+  ┊ ┊   ┊ ┕ exp:num
+  ┊ ┊   ┝ curData:obj
+  ┊ ┊   ┊ ┝ aura:str
+  ┊ ┊   ┊ ┕ rflxCur:num
+  ┊ ┊   ┝ tick:fun
+  ┊ ┊   ┝ getLevel:fun
+  ┊ ┊   ┝ getExpOfLevel:fun
+  ┊ ┊   ┝ calcRapportBonus:fun
+  ┊ ┊   ┝ saveHightstPerson:fun
+  ┊ ┊   ┝ getBonusByAura:fun
+  ┊ ┊   ┝ kingIsHome:fun
+  ┊ ┊   ┝ gainExp:fun
+  ┊ ┊   ┕ recalcListLength:fun
+  ┊ ┝ shineActions.js
+  ┊ ┊ ┝ tick:fun
+  ┊ ┊ ┕ helpers:obj
+  ┊ ┊   ┝ calcFavor:fun
+  ┊ ┊   ┝ saveHighestBlessings:fun
+  ┊ ┊   ┝ saveHighest:fun
+  ┊ ┊   ┕ calcTributeBonus:fun
+  ┊ ┕ warMapActions.js
+  ┊   ┝ warMapActions:arr
+  ┊   ┝ warMap:obj
+  ┊   ┊ ┝ tick:fun
+  ┊   ┊ ┝ actions:obj
+  ┊   ┊ ┊ ┝ createWarMapActions:fun
+  ┊   ┊ ┊ ┝ addWarMapAction:fun
+  ┊   ┊ ┊ ┝ getWarMapActionBuVarName:fun
+  ┊   ┊ ┊ ┕ createNameString:fun
+  ┊   ┊ ┝ units:obj
+  ┊   ┊ ┊ ┝ UnitStats:obj
+  ┊   ┊ ┊ ┊ ┝ king:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┕ hp:num
+  ┊   ┊ ┊ ┊ ┝ spearman:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┕ hp:num
+  ┊   ┊ ┊ ┊ ┝ archer:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┕ hp:num
+  ┊   ┊ ┊ ┊ ┝ catapult:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┕ hp:num
+  ┊   ┊ ┊ ┊ ┝ thug:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┝ hp:num
+  ┊   ┊ ┊ ┊ ┊ ┕ exp:num
+  ┊   ┊ ┊ ┊ ┝ brigand:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┝ hp:num
+  ┊   ┊ ┊ ┊ ┊ ┕ exp:num
+  ┊   ┊ ┊ ┊ ┝ bandit:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┝ hp:num
+  ┊   ┊ ┊ ┊ ┊ ┕ exp:num
+  ┊   ┊ ┊ ┊ ┝ thief:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┝ hp:num
+  ┊   ┊ ┊ ┊ ┊ ┕ exp:num
+  ┊   ┊ ┊ ┊ ┝ goblin:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┝ hp:num
+  ┊   ┊ ┊ ┊ ┊ ┕ exp:num
+  ┊   ┊ ┊ ┊ ┝ hobgoblin:obj
+  ┊   ┊ ┊ ┊ ┊ ┝ atk:num
+  ┊   ┊ ┊ ┊ ┊ ┝ hp:num
+  ┊   ┊ ┊ ┊ ┊ ┕ exp:num
+  ┊   ┊ ┊ ┊ ┕ troll:obj
+  ┊   ┊ ┊ ┊   ┝ atk:num
+  ┊   ┊ ┊ ┊   ┝ hp:num
+  ┊   ┊ ┊ ┊   ┕ exp:num
+  ┊   ┊ ┊ ┝ getStatsOfUnit:fun
+  ┊   ┊ ┊ ┝ createUnit:fun
+  ┊   ┊ ┊ ┝ getAllUnits:fun
+  ┊   ┊ ┊ ┝ getKingUnit:fun
+  ┊   ┊ ┊ ┝ createTravelingUnits:fun
+  ┊   ┊ ┊ ┝ addTravelingObj:fun
+  ┊   ┊ ┊ ┝ checkUnitsToJoinBase:fun
+  ┊   ┊ ┊ ┝ travel:fun
+  ┊   ┊ ┊ ┝ getTravelObjSpeed:fun
+  ┊   ┊ ┊ ┝ checkUnitsForCombineInBase:fun
+  ┊   ┊ ┊ ┝ sortHpLowestToHighest:fun
+  ┊   ┊ ┊ ┝ updateExistingUnitStats:fun
+  ┊   ┊ ┊ ┕ applyUnitStats:fun
+  ┊   ┊ ┕ bases:obj
+  ┊   ┊   ┝ baseNameToObj:fun
+  ┊   ┊   ┝ getAllBases:fun
+  ┊   ┊   ┝ getUnitsByAllegiance:fun
+  ┊   ┊   ┝ fight:fun
+  ┊   ┊   ┝ dealDamage:fun
+  ┊   ┊   ┝ getReward:fun
+  ┊   ┊   ┝ createAttackers:fun
+  ┊   ┊   ┝ setInitialHP:fun
+  ┊   ┊   ┝ getTotalHP:fun
+  ┊   ┊   ┕ checkWinLevel:fun
+  ┊   ┕ travelIds:num
+  ┝ data
+  ┊ ┝ actionData.js
+  ┊ ┊ ┝ actionData:obj
+  ┊ ┊ ┊ ┝ list:arr
+  ┊ ┊ ┊ ┊ ┝ king:arr
+  ┊ ┊ ┊ ┊ ┝ castle:arr
+  ┊ ┊ ┊ ┊ ┕ other:arr
+  ┊ ┊ ┊ ┝ create:obj
+  ┊ ┊ ┊ ┊ ┝ actionBase:fun
+  ┊ ┊ ┊ ┊ ┝ kingAction:fun
+  ┊ ┊ ┊ ┊ ┝ blessingAction:fun
+  ┊ ┊ ┊ ┊ ┝ warMapAction:fun
+  ┊ ┊ ┊ ┊ ┝ castleAction:fun
+  ┊ ┊ ┊ ┊ ┕ otherAction:fun
+  ┊ ┊ ┊ ┝ get:obj
+  ┊ ┊ ┊ ┊ ┕ blessingActions:fun
+  ┊ ┊ ┊ ┕ initial:obj
+  ┊ ┊ ┊   ┝ all:fun
+  ┊ ┊ ┊   ┝ castle:obj
+  ┊ ┊ ┊   ┊ ┝ income:fun
+  ┊ ┊ ┊   ┊ ┝ army:fun
+  ┊ ┊ ┊   ┊ ┕ spirits:fun
+  ┊ ┊ ┊   ┝ king:obj
+  ┊ ┊ ┊   ┊ ┝ auras:fun
+  ┊ ┊ ┊   ┊ ┝ growth:fun
+  ┊ ┊ ┊   ┊ ┕ blessings:fun
+  ┊ ┊ ┊   ┕ other:fun
+  ┊ ┊ ┝ getCastleActionByVarName:fun
+  ┊ ┊ ┝ getKingActionByVarName:fun
+  ┊ ┊ ┝ getOtherActionByVarName:fun
+  ┊ ┊ ┕ addSleepAction:fun
+  ┊ ┕ levelData.js
+  ┊   ┝ levelData:obj
+  ┊   ┊ ┝ name:str
+  ┊   ┊ ┝ initial:obj
+  ┊   ┊ ┊ ┝ people:num
+  ┊   ┊ ┊ ┝ gold:num
+  ┊   ┊ ┊ ┝ wood:num
+  ┊   ┊ ┊ ┕ mana:num
+  ┊   ┊ ┝ home:obj
+  ┊   ┊ ┊ ┝ coords:obj
+  ┊   ┊ ┊ ┝ units:arr
+  ┊   ┊ ┊ ┝ initialFriendlyHP:num
+  ┊   ┊ ┊ ┝ varName:str
+  ┊   ┊ ┊ ┕ fightCounter:num
+  ┊   ┊ ┝ dungeons:arr
+  ┊   ┊ ┝ hideouts:arr
+  ┊   ┊ ┝ data:obj
+  ┊   ┊ ┊ ┝ person:num
+  ┊   ┊ ┊ ┝ rapport:num
+  ┊   ┊ ┊ ┕ difficulty:num
+  ┊   ┊ ┝ blessings:obj
+  ┊   ┊ ┊ ┝ bountyTribute:num
+  ┊   ┊ ┊ ┝ bountyTributeNeeded:num
+  ┊   ┊ ┊ ┝ enchantTribute:num
+  ┊   ┊ ┊ ┝ enchantTributeNeeded:num
+  ┊   ┊ ┊ ┝ feastTribute:num
+  ┊   ┊ ┊ ┝ feastTributeNeeded:num
+  ┊   ┊ ┊ ┝ guidanceTribute:num
+  ┊   ┊ ┊ ┝ guidanceTributeNeeded:num
+  ┊   ┊ ┊ ┝ heroesTribute:num
+  ┊   ┊ ┊ ┝ heroesTributeNeeded:num
+  ┊   ┊ ┊ ┝ peaceTribute:num
+  ┊   ┊ ┊ ┕ peaceTributeNeeded:num
+  ┊   ┊ ┝ traveling:arr
+  ┊   ┊ ┝ victory:boo
+  ┊   ┊ ┕ empowered:obj
+  ┊   ┕ createLevel:fun
+  ┝ helpers
+  ┊ ┝ helpers.js
+  ┊ ┊ ┝ round1:fun
+  ┊ ┊ ┝ round2:fun
+  ┊ ┊ ┝ round5:fun
+  ┊ ┊ ┝ precision2:fun
+  ┊ ┊ ┝ precision3:fun
+  ┊ ┊ ┝ precision4:fun
+  ┊ ┊ ┝ pxToInt:fun
+  ┊ ┊ ┝ round:fun
+  ┊ ┊ ┝ copyArray:fun
+  ┊ ┊ ┝ withinDistance:fun
+  ┊ ┊ ┝ getDistance:fun
+  ┊ ┊ ┝ moveToTarget:fun
+  ┊ ┊ ┝ intToStringNegative:fun
+  ┊ ┊ ┝ intToString:fun
+  ┊ ┊ ┝ intToStringRound:fun
+  ┊ ┊ ┝ toSuffix:fun
+  ┊ ┊ ┝ nFormatter:fun
+  ┊ ┊ ┝ camelize:fun
+  ┊ ┊ ┝ isVisible:fun
+  ┊ ┊ ┝ factorial:fun
+  ┊ ┊ ┝ fibonacci:fun
+  ┊ ┊ ┝ sortArrayObjectsByValue:fun
+  ┊ ┊ ┝ addClassToDiv:fun
+  ┊ ┊ ┝ removeClassFromDiv:fun
+  ┊ ┊ ┝ number2Words:fun
+  ┊ ┊ ┝ capitalizeFirst:fun
+  ┊ ┊ ┝ numberToWords:fun
+  ┊ ┊ ┝ eccode:fun
+  ┊ ┊ ┝ decode:fun
+  ┊ ┊ ┝ lzw_encode:fun
+  ┊ ┊ ┝ lzw_decode:fun
+  ┊ ┊ ┕ roughSizeOfObject:fun
+  ┊ ┕ interval.js
+  ┊   ┕ interId:num
+  ┊ //图片资源
+  ┝ img			
+  ┊ ┝ ...
+  ┊ ┕ [44 files_svg]
+  ┊ //界面配置
+  ┝ views
+  ┊ ┝ mainView.js
+  ┊ ┊ ┕ view:obj
+  ┊ ┊   ┝ initialize:fun
+  ┊ ┊   ┝ actionInfoDiv:obj
+  ┊ ┊   ┊ ┝ king:ele
+  ┊ ┊   ┊ ┝ castle:ele
+  ┊ ┊   ┊ ┕ units:ele
+  ┊ ┊   ┝ updating:obj
+  ┊ ┊   ┊ ┝ update:fun
+  ┊ ┊   ┊ ┝ saveCurrentState:fun
+  ┊ ┊   ┊ ┝ updateResources:fun
+  ┊ ┊   ┊ ┝ updateLists:fun
+  ┊ ┊   ┊ ┝ updateInfoDiv:fun
+  ┊ ┊   ┊ ┝ updateCreated:fun
+  ┊ ┊   ┊ ┝ updateUnits:fun
+  ┊ ┊   ┊ ┝ updateTraveling:fun
+  ┊ ┊   ┊ ┝ updateKingTab:fun
+  ┊ ┊   ┊ ┝ updateShrineTab:fun
+  ┊ ┊   ┊ ┕ updateActionVisibility:fun
+  ┊ ┊   ┝ actionList:obj
+  ┊ ┊   ┊ ┝ createNextList:fun
+  ┊ ┊   ┊ ┝ createCurrentList:fun
+  ┊ ┊   ┊ ┕ showInfoDiv:fun
+  ┊ ┊   ┝ performance:obj
+  ┊ ┊   ┊ ┝ clearNextListeners:fun
+  ┊ ┊   ┊ ┝ clearCurrentListeners:fun
+  ┊ ┊   ┊ ┕ getNewTravelObj:fun
+  ┊ ┊   ┝ clickable:obj
+  ┊ ┊   ┊ ┕ initial:obj
+  ┊ ┊   ┊ ┊ ┝ createIcons:fun
+  ┊ ┊   ┊ ┊ ┝ createWarMap:fun
+  ┊ ┊   ┊ ┊ ┕ createEmpower:fun
+  ┊ ┊   ┕ helpers:obj
+  ┊ ┊     ┝ createMapTooltipString:fun
+  ┊ ┊     ┝ translateToWarMapCoords:fun
+  ┊ ┊     ┝ getUnitString:fun
+  ┊ ┊     ┝ getImage:fun
+  ┊ ┊     ┝ getTravelingImage:fun
+  ┊ ┊     ┕ getCostsString:fun
+  ┊ ┕ stylesheet.css
+  ┊ //作者笔记
+  ┝ NOTES
+  ┊ //译者笔记
+  ┝ READ
+  ┊ //鼠标事件
+  ┝ clickResponses.js
+  ┊ ┝ switchInfoBoxTab:fun
+  ┊ ┝ switchInfoTab:fun
+  ┊ ┝ openInfoBox:fun
+  ┊ ┝ closeInfoBox:fun
+  ┊ ┝ openStory:fun
+  ┊ ┝ switchListTab:fun
+  ┊ ┝ selectAction:fun
+  ┊ ┝ deselect:fun
+  ┊ ┝ straightToAdd:fun
+  ┊ ┝ switchMapMoveUnits:fun
+  ┊ ┝ changeBuildValue:fun
+  ┊ ┝ setMapArrowVisibility:fun
+  ┊ ┝ prevLevel:fun
+  ┊ ┝ nextLevel:fun
+  ┊ ┝ createTooltip:fun
+  ┊ ┝ nextTooltip:fun
+  ┊ ┝ openExtras:fun
+  ┊ ┝ prevStory:fun
+  ┊ ┝ nextStory:fun
+  ┊ ┝ adjustStoryDivs:fun
+  ┊ ┝ diaryChanged:fun
+  ┊ ┝ closePopupBox:fun
+  ┊ ┝ openEmpowerMenu:fun
+  ┊ ┝ closeEmpowerMenu:fun
+  ┊ ┝ buyEmpowerUnit:fun
+  ┊ ┝ changeEmpowerStage:fun
+  ┊ ┝ setLoop:fun
+  ┊ ┝ addLoop:fun
+  ┊ ┝ removeLoop:fun
+  ┊ ┝ split:fun
+  ┊ ┝ moveUp:fun
+  ┊ ┝ moveDown:fun
+  ┊ ┝ removeAction:fun
+  ┊ ┝ handleDragStart:fun
+  ┊ ┝ handleDragOver:fun
+  ┊ ┝ handleDragDrop:fun
+  ┊ ┝ moveQueuedAction:fun
+  ┊ ┝ dragOverDecorate:fun
+  ┊ ┝ dragExitUndecorate:fun
+  ┊ ┝ draggedDecorate:fun
+  ┊ ┝ draggedUndecorate:fun
+  ┊ ┕ clickRestart:fun
+  ┊ //功能驱动
+  ┝ drivers.js
+  ┊ ┝ tick:fun
+  ┊ ┝ recalcInterval:fun
+  ┊ ┝ addOffline:fun
+  ┊ ┝ togglePause:fun
+  ┊ ┝ pauseGame:fun
+  ┊ ┝ unpauseGame:fun
+  ┊ ┕ restart:fun
+  ┊ //玩家入口
+  ┝ index.html
+  ┊ //存档机制  
+  ┝ saving.js
+  ┊ ┝ startGame:fun
+  ┊ ┝ clearSave:fun
+  ┊ ┝ loadDefaults:fun
+  ┊ ┝ load:fun
+  ┊ ┝ save:fun
+  ┊ ┝ exportMapList:fun
+  ┊ ┝ exportCurrentList:fun
+  ┊ ┝ importList:fun
+  ┊ ┝ exportSave:fun
+  ┊ ┝ importSave:fun
+  ┊ ┝ displayBetaSaveNote:fun
+  ┊ ┝ moveSaveToBeta:fun
+  ┊ ┝ moveSaveFromBeta:fun
+  ┊ ┝ createActionListsFromSimplifiedList:fun
+  ┊ ┝ listToActions:fun
+  ┊ ┝ listsToSimplified:fun
+  ┊ ┕ nextListSimplisied:fun
+  ┊ //故事剧情
+  ┝ storyAndTutorial.js
+  ┊ ┝ tutorial:obj
+  ┊ ┝ story:obj
+  ┊ ┕ divText:str
+  ┝ unlockLists.js
+  ┊ ┕ unlockLists:obj
+  ┊   ┝ tick:fun
+  ┊   ┝ checkUnlocks:fun
+  ┊   ┝ check:fun
+  ┊   ┕ checkStory:fun
+  ┊ //汉化字典
+  ┕ zh.js
+  ┋ ┝ cnItems:obj
+  ┋ ┝ cnItem:fun
+  ┋ ┝ cntit:obj
+  ┋ ┕ cntitle:fun
+  ┝━━━━━━━━━━━━━━
+  ┋ //外部引用
+  ┝ font-awesome.min.css
+  ┝ jquery.min.js
+  ┗━━━━━━━━━━━━━━
+
+Envir:
+  Testing in Google-Chrome,
+  'http://likexia.gitee.io/stopsign/KingsPerfectWar/',
+  'http://stopsign.github.io/KingsPerfectWar/';
