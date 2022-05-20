@@ -58,7 +58,7 @@ function cnItem(text) {
     //未收录则保存
     cnItems._other.push(text);
     //未收录则打印
-    //console.log('有需要汉化的英文items', cnItems);
+    console.log('有需要汉化的英文items', cnItems);
     return text;
 }
 /********************/
@@ -88,7 +88,7 @@ function cntitle(text) {
     //未收录则保存
     cntit._other.push(text);
     //未收录则打印
-    //console.log('有需要汉化的英文title', cntit);
+    console.log('有需要汉化的英文title', cntit);
     return text;
 }
 /********************/
